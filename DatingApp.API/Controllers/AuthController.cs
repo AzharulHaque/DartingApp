@@ -35,7 +35,7 @@ namespace DatingApp.API.Controllers
 
             //Validate User
             userDto.Username = userDto.Username.ToLower();
-            if(await _authRepository.UserExist(userDto.Username))
+            if (await _authRepository.UserExist(userDto.Username))
             {
                 return BadRequest("User already exist");
             }
@@ -56,7 +56,7 @@ namespace DatingApp.API.Controllers
         {
             //Getting the user from repo once login is successfull
             var userFromRepo = await _authRepository.Login(userLoginDto.UserName.ToLower(), userLoginDto.Password);
-            if(userFromRepo == null)
+            if (userFromRepo == null)
             {
                 return Unauthorized();
             }
@@ -95,7 +95,6 @@ namespace DatingApp.API.Controllers
             {
                 token = tokenHandler.WriteToken(token)
             });
-
         }
     }
 }
